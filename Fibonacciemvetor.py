@@ -20,7 +20,6 @@ def criar_lista(limite: int) -> list:
     L = []
     for n in range(0, limite+1):
         L.append(retorna(n))
-    print(L)
     return L
 
 

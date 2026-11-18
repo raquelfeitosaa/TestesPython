@@ -1,4 +1,4 @@
-from bubblesortTreino import troca
+
 def seleciona(L: list) -> int:
     maior = 0
     for i in range(len(L)):

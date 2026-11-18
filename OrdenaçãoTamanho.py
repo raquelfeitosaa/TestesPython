@@ -13,28 +13,38 @@
 #A saída deve conter o conjunto de strings da entrada ordenado pelo tamanho das
 # strings. Um espaço em branco deve ser impresso entre duas palavras.
 
+#Trocando de lugar somente elementos que eu quero
+def troca(L, q, n) -> None:
+    tem = L[q]
+    L[q] = L[n]
+    L[n] = tem
 
-def troca(Lista: list, Lugar1: str, Lugar2: str) -> None:
-    lugarNovo = Lista[Lugar1] #Lugar1 é o lugar que eu quero trocar e a posição dele na lista
-    Lista[Lugar1] = Lista[Lugar2]
-    Lista[Lugar2] = lugarNovo
 
-def empurra_decrescente(lista: list, tamanhoLista: int) -> None:
+##Empurrando o menor elemento para o final da lista
+def empurra(L: list, n: int) -> None:
     i = 0
-    while i < tamanhoLista-1:
-        if lista[i] < lista[i+1]: 
-            troca(lista, i, i+1)
+    while i < n-1:
+        if len(L[i]) < len(L[i+1]):
+            troca(L, i, i+1)
         i += 1
 
+
+##Decrecente lista
+def bubble_sort(L: list) -> list:
+    n = len(L) #tamanho da lista 
+    while n > 1:
+        empurra(L, n)
+        n -= 1
+    return L
+
 def main():
-    tamanho = int(input("")) #Numero de repetição
-    while tamanho > 0:
-        item = list(map(str, input('').split()))
-        n = len(item)
-        empurra_decrescente(item, n)
-        print(*item)
-        tamanho -= 1
-        item = []
+    contador = int(input())
+    while contador > 0:
+        listinha = list(map(str, input().split()))
+        bubble_sort(listinha)
+        print(*listinha)
+        contador -= 1
+
 
 if __name__ == '__main__':
     main()
